@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-
+const API_BASE_URL = "https://hostelease-djx8.onrender.com";
 function App() {
   const [page, setPage] = useState("Dashboard");
   const [searchTerm, setSearchTerm] = useState("");
@@ -45,7 +45,7 @@ function App() {
 
   // Load dashboard statistics
   function loadStats() {
-    fetch("http://localhost:5000/api/dashboard")
+    fetch(`${API_BASE_URL}/api/dashboard`)
       .then((res) => {
         if (!res.ok) throw new Error("Could not load dashboard");
         return res.json();
@@ -56,7 +56,7 @@ function App() {
 
   // Load students
   function loadStudents() {
-    fetch("http://localhost:5000/api/students")
+    fetch(`${API_BASE_URL}/api/students`)
       .then((res) => {
         if (!res.ok) throw new Error("Could not load students");
         return res.json();
@@ -67,7 +67,7 @@ function App() {
 
   // Load rooms
   function loadRooms() {
-    fetch("http://localhost:5000/api/rooms")
+    fetch(`${API_BASE_URL}/api/rooms`)
       .then((res) => {
         if (!res.ok) throw new Error("Could not load rooms");
         return res.json();
@@ -81,7 +81,7 @@ function App() {
 
   // Load room allocation records
   function loadAllocations() {
-    fetch("http://localhost:5000/api/allocations")
+    fetch(`${API_BASE_URL}/api/allocations`)
       .then((res) => {
         if (!res.ok) throw new Error("Could not load allocations");
         return res.json();
@@ -110,7 +110,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/students",
+        `${API_BASE_URL}/api/students`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -152,7 +152,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/rooms",
+        `${API_BASE_URL}/api/rooms`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -195,7 +195,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/rooms/${id}`,
+        `${API_BASE_URL}/api/rooms/${id}`,
         { method: "DELETE" }
       );
 
@@ -257,7 +257,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/rooms/${room.id}`,
+        `${API_BASE_URL}/api/rooms/${room.id}`,
         {
           method: "PUT",
           headers: {
@@ -293,7 +293,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/allocations",
+        `${API_BASE_URL}/api/allocations`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -339,7 +339,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/allocations/${id}`,
+        `${API_BASE_URL}/api/allocations/${id}`,
         { method: "DELETE" }
       );
 
